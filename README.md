@@ -1,6 +1,9 @@
 # 📊 Production and Quality Performance Dashboard
 
 An interactive dashboard built with **Streamlit** to monitor and analyze production and quality performance in industries, featuring dynamic visualizations and customizable filters.
+![TAB1](https://github.com/user-attachments/assets/ed43909e-bf45-4c89-8f06-7e44043b4193)
+![TAB2](https://github.com/user-attachments/assets/dd055a60-5a62-4d35-b8f6-8f9957cee9a7)
+![TAB2_Continuation](https://github.com/user-attachments/assets/acfaf251-03db-4472-89ff-ed3cc054bc77)
 
 ---
 
