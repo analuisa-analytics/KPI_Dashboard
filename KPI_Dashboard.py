@@ -485,25 +485,25 @@ with tab2:
     st.markdown("---")
     st.subheader("✏️ Add Corrective Action")
 
-    # Select line through ID
+    # Armazena ações como um dicionário por ID
+    if 'acoes_dict' not in st.session_state:
+        st.session_state.acoes_dict = {}
+
+    # Select ID
     id_selecionado = st.selectbox("Select ID:", df_nc_filtered['id'])
 
-    # Text box to write corrective action
-    index = df_nc_filtered[df_nc_filtered['id'] == id_selecionado].index[0]
-    acao_input = st.text_area("Describe Corrective Action :", value=st.session_state.acoes[index])
+    # Campo de texto com valor anterior salvo (se houver)
+    acao_input = st.text_area("Describe Corrective Action :", value=st.session_state.acoes_dict.get(id_selecionado, ""))
 
-    # Save button
     if st.button("Submit Action"):
-        st.session_state.acoes[index] = acao_input
+        st.session_state.acoes_dict[id_selecionado] = acao_input
         st.success("Successfully saved!")
 
-    # Update column with actions
-    df_nc_filtered['Corrective Action'] = st.session_state.acoes
+    # Cria coluna no DataFrame com as ações
+    df_nc_filtered['Corrective Action'] = df_nc_filtered['id'].map(st.session_state.acoes_dict)
 
-    st.markdown("---")
-    st.subheader("📑 Dataframe with Corrective Action")
+    # Mostra o dataframe
     st.dataframe(df_nc_filtered, use_container_width=True)
-
 
 
 
